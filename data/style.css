@@ -1,0 +1,143 @@
+/* Main Body */
+body {
+	font-family: verdana, sans-serif;
+	font-size: 11px;
+	background: #f3f3f3;
+	}
+	
+#container {
+	width: 850px;
+	padding: 30px;
+	padding-bottom: 5px;
+	border: 1px solid #ccc;
+	background: #fff;
+	margin: 0 auto;
+	}
+	
+/* Header */
+#header {
+	width: 800px;
+	border-left: 4px solid #ccc;
+	border-right: 4px solid #ccc;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	text-align: center;
+	}
+
+/* H1 */
+h1 {
+	font-size: 24px;
+	margin-top:50px;
+}
+
+	
+/* Main Content */
+#content {
+	width: 550px;
+	margin-top: 15px;
+	}
+	
+#content h2 {
+	font-size: 20px;
+	}
+	
+#content p {
+	font-size: 12px;
+	}
+	
+#content a, a:visited {
+	color: #666666;
+	text-decoration: underline;
+	}
+	
+#content a:hover {
+	color: #000000;
+	}
+	
+/* Table */
+table {
+	margin: 1em;
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 2px;
+	border-style: solid solid solid solid;
+	border-color: gray gray gray gray;
+	border-collapse: collapse;
+	background-color: white;
+	font-size: 12px;
+}
+table th {
+	border-width: 1px 1px 1px 1px;
+	padding:0.2em 0.4em;
+	border-style: solid solid solid solid;
+	border-color: gray gray gray gray;
+	background-color: white;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+table td {
+	border-width: 1px 1px 1px 1px;
+	padding:0.2em 0.4em;
+	border-style: solid solid solid solid;
+	border-color: gray gray gray gray;
+	background-color: white;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+
+table td:hover {
+	border-width: 1px 1px 1px 1px;
+	padding:0.2em 0.4em;
+	border-style: solid solid solid solid;
+	border-color: gray gray gray gray;
+	background-color: #ffbbbb;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+
+table td.name {
+	border-width: 1px 1px 1px 1px;
+	padding:0.2em 0.4em;
+	border-style: solid solid solid solid;
+	border-color: gray gray gray gray;
+	background-color: #eeeeee;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+
+table a:link {
+	text-decoration:none;
+	color:#555555;
+}
+
+table a:visited {
+	text-decoration:none;
+	color:#555555;
+}
+
+table a:hover {
+	text-decoration:none;
+	color:#ff0000;
+}
+
+table.noborder {
+	border-width: 0px;
+	border-spacing: 0px;
+}
+
+table.noborder th {
+	border-width: 0px;
+	padding:2px;
+	
+}
+
+table.noborder td {
+	border-width: 0px;
+	padding:2px;
+}
+
+table th.separator {
+	border-width: 2px 0px 2px 0px;
+	padding:0em 0em;
+	border-style: solid solid solid solid;
+	border-color: gray gray gray gray;
+	background-color: #ECE8E5;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
