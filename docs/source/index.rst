@@ -7,6 +7,10 @@ libtsm
 ==================================
 ``libtsm`` is a Python toolbox for time-scale modification (TSM) and pitch-shifting.
 
+The toolbox is based on a re-implementation of the
+`Matlab TSM toolbox <https://www.audiolabs-erlangen.de/resources/MIR/TSMtoolbox/>`_ by Jonathan Driedger and Meinard Müller.
+
+
 If you use this toolbox, please cite the following
 `paper <https://www.audiolabs-erlangen.de/resources/MIR/2021-DAFX-AdaptivePitchShifting>`_ [#]_:
 

@@ -7,8 +7,8 @@ https://www.audiolabs-erlangen.de/resources/MIR/TSMtoolbox/
 
 
 ### Installation
-This toolbox is not (yet) available on PyPI. In order to use the `libtsm`, please clone the repository. 
-You can use the toolbox functions by importing `libtsm`:
+This toolbox is not yet available on PyPI. In order to use the `libtsm`, please clone the repository. 
+You can use the toolbox functions by importing the local library `libtsm`:
 ```
 import libtsm
 ```
