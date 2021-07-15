@@ -2,7 +2,11 @@
 
 A Python toolbox for Time-Scale Modification (TSM) and Pitch-Shifting.
 
-This toolbox is based on a re-implementation of the Matlab TSM toolbox by Jonathan Driedger and Meinard Müller:
+Details and example application:
+
+https://www.audiolabs-erlangen.de/resources/MIR/2021-DAFX-AdaptivePitchShifting
+
+`libtsm` is based on a re-implementation of the Matlab TSM Toolbox by Jonathan Driedger and Meinard Müller:
 
 https://www.audiolabs-erlangen.de/resources/MIR/TSMtoolbox/
 
@@ -14,6 +18,12 @@ With Python >= 3.6, you can install libtsm using the Python package manager pip:
 ```
 pip install libtsm
 ```
+
+## Documentation
+
+The API documentation of `libtsm` is hosted here:
+
+https://meinardmueller.github.io/libtsm
 
 ## Citing
 
