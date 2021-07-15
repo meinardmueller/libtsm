@@ -1,20 +1,22 @@
 Getting Started
 ===============
 
-You can install libtsm using Anaconda:
+Installation
+------------
+
+With Python >= 3.6, you can install ``libtsm`` using the Python package manager pip:
+
+.. code-block:: bash
+
+  pip install libtsm
+
+Contributing
+------------
+
+For development, testing, or generating the API documentation, clone the git repository and install:
 
 .. code-block:: bash
 
     git clone https://github.com/meinardmueller/libtsm.git
-    conda create -n libtsm python=3.8
-    conda activate libtsm
-    cd ./libtsm
-    pip install .
-
-For development purposes, install:
-
-.. code-block:: bash
-
-    pip install .[dev]
-    pip install .[tests]
-    pip install .[docs]
+    cd libtsm
+    pip install -e .[dev,tests,docs]

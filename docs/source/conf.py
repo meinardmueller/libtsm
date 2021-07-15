@@ -85,7 +85,7 @@ html_theme_options = {'logo_only': True}
 
 
 def remove_module_docstring(app, what, name, obj, options, lines):
-    if what == 'description':
+    if what == "module":
         del lines[:]
 
 

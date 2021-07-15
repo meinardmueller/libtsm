@@ -31,9 +31,10 @@ setup(
                       'numpy >= 1.17.0, < 2.0.0',
                       'pysoundfile >= 0.9.0, < 1.0.0',
                       'scipy >= 1.3.0, < 2.0.0'],
-    python_requires='>=3.6, <3.9',
+    python_requires='>=3.6',
     extras_require={
-        'dev': ['nbstripout == 0.4.*'],
+        'dev': ['jupyter == 1.0.*',
+                'nbstripout == 0.4.*'],
         'tests': ['pytest == 6.2.*'],
         'docs': ['sphinx == 4.0.*',
                  'sphinx-rtd-theme == 0.5.*'],

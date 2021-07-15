@@ -95,8 +95,11 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
 </ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../api_documentation.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index_tsm.html">Time-Scale Modification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index_pitchshift.html">Pitch-Shifting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index_utils.html">Utils</a></li>
 </ul>
 
             
@@ -176,7 +179,7 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
 
 
-<div class="viewcode-block" id="win"><a class="viewcode-back" href="../../api_documentation.html#libtsm.utils.win">[docs]</a><span class="k">def</span> <span class="nf">win</span><span class="p">(</span><span class="n">win_len</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="win"><a class="viewcode-back" href="../../index_utils.html#libtsm.utils.win">[docs]</a><span class="k">def</span> <span class="nf">win</span><span class="p">(</span><span class="n">win_len</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generates a sin^beta window.</span>
 
@@ -197,7 +200,7 @@
     <span class="k">return</span> <span class="n">w</span></div>
 
 
-<div class="viewcode-block" id="hps"><a class="viewcode-back" href="../../api_documentation.html#libtsm.utils.hps">[docs]</a><span class="k">def</span> <span class="nf">hps</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ana_hop</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">win_length</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">win_beta</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="mi">22050</span><span class="p">,</span> <span class="n">zero_pad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fil_len_harm</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fil_len_perc</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<div class="viewcode-block" id="hps"><a class="viewcode-back" href="../../index_utils.html#libtsm.utils.hps">[docs]</a><span class="k">def</span> <span class="nf">hps</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ana_hop</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">win_length</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">win_beta</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="mi">22050</span><span class="p">,</span> <span class="n">zero_pad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fil_len_harm</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fil_len_perc</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
         <span class="n">masking_mode</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Harmonic - Percussive separation usign median filters.</span>
@@ -291,7 +294,7 @@
     <span class="k">return</span> <span class="n">x_harm</span><span class="p">,</span> <span class="n">x_perc</span></div>
 
 
-<div class="viewcode-block" id="median_filter"><a class="viewcode-back" href="../../api_documentation.html#libtsm.utils.median_filter">[docs]</a><span class="k">def</span> <span class="nf">median_filter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">filt_len</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="median_filter"><a class="viewcode-back" href="../../index_utils.html#libtsm.utils.median_filter">[docs]</a><span class="k">def</span> <span class="nf">median_filter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">filt_len</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Median filter implementation.</span>
 
@@ -333,7 +336,7 @@
     <span class="k">return</span> <span class="n">Y</span></div>
 
 
-<div class="viewcode-block" id="stft"><a class="viewcode-back" href="../../api_documentation.html#libtsm.utils.stft">[docs]</a><span class="k">def</span> <span class="nf">stft</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ana_hop</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">win_length</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span> <span class="n">win_beta</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="mi">22050</span><span class="p">,</span> <span class="n">num_of_frames</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">fft_shift</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">zero_pad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> \
+<div class="viewcode-block" id="stft"><a class="viewcode-back" href="../../index_utils.html#libtsm.utils.stft">[docs]</a><span class="k">def</span> <span class="nf">stft</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ana_hop</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">win_length</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span> <span class="n">win_beta</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="mi">22050</span><span class="p">,</span> <span class="n">num_of_frames</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">fft_shift</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">zero_pad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> \
         <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the Short-Time Fourier Transform (STFT) of the input audio signal.</span>
@@ -424,7 +427,7 @@
     <span class="k">return</span> <span class="n">spec</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">t</span></div>
 
 
-<div class="viewcode-block" id="istft"><a class="viewcode-back" href="../../api_documentation.html#libtsm.utils.istft">[docs]</a><span class="k">def</span> <span class="nf">istft</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">syn_hop</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">win_length</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span> <span class="n">win_beta</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="mi">22050</span><span class="p">,</span> <span class="n">zero_pad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_of_iter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">orig_sig_len</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+<div class="viewcode-block" id="istft"><a class="viewcode-back" href="../../index_utils.html#libtsm.utils.istft">[docs]</a><span class="k">def</span> <span class="nf">istft</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">syn_hop</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">win_length</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span> <span class="n">win_beta</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="mi">22050</span><span class="p">,</span> <span class="n">zero_pad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_of_iter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">orig_sig_len</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
           <span class="n">restore_energy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fft_shift</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the &#39;inverse&#39; Short Time Fourier Transform, according to the paper &quot;Signal Estimation from Modified</span>
@@ -493,7 +496,7 @@
     <span class="k">return</span> <span class="n">y</span></div>
 
 
-<div class="viewcode-block" id="lsee_mstft"><a class="viewcode-back" href="../../api_documentation.html#libtsm.utils.lsee_mstft">[docs]</a><span class="k">def</span> <span class="nf">lsee_mstft</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">syn_hop</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">win_length</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span> <span class="n">win_beta</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">zero_pad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">restore_energy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fft_shift</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="lsee_mstft"><a class="viewcode-back" href="../../index_utils.html#libtsm.utils.lsee_mstft">[docs]</a><span class="k">def</span> <span class="nf">lsee_mstft</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">syn_hop</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">win_length</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span> <span class="n">win_beta</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">zero_pad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">restore_energy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fft_shift</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the &#39;inverse&#39; Short Time Fourier Transform (ISTFT) using the Griffin Lim procedure.</span>
 
@@ -568,7 +571,7 @@
     <span class="k">return</span> <span class="n">x</span></div>
 
 
-<div class="viewcode-block" id="find_peaks"><a class="viewcode-back" href="../../api_documentation.html#libtsm.utils.find_peaks">[docs]</a><span class="k">def</span> <span class="nf">find_peaks</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<div class="viewcode-block" id="find_peaks"><a class="viewcode-back" href="../../index_utils.html#libtsm.utils.find_peaks">[docs]</a><span class="k">def</span> <span class="nf">find_peaks</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Finds peaks on spectrum X. An index in X is considered a peak if its value is the largest among its four nearest</span>
 <span class="sd">    neighbours.</span>
@@ -604,7 +607,7 @@
     <span class="k">return</span> <span class="n">peaks</span><span class="p">,</span> <span class="n">infl_region_start</span><span class="p">,</span> <span class="n">infl_region_end</span></div>
 
 
-<div class="viewcode-block" id="cross_corr"><a class="viewcode-back" href="../../api_documentation.html#libtsm.utils.cross_corr">[docs]</a><span class="k">def</span> <span class="nf">cross_corr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">win_len</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="cross_corr"><a class="viewcode-back" href="../../index_utils.html#libtsm.utils.cross_corr">[docs]</a><span class="k">def</span> <span class="nf">cross_corr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">win_len</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes cross correlation between signals x and y over a window of size win_len.</span>
 
@@ -636,7 +639,7 @@
     <span class="k">return</span> <span class="n">cc</span></div>
 
 
-<div class="viewcode-block" id="normalize_length"><a class="viewcode-back" href="../../api_documentation.html#libtsm.utils.normalize_length">[docs]</a><span class="k">def</span> <span class="nf">normalize_length</span><span class="p">(</span><span class="n">xf</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="normalize_length"><a class="viewcode-back" href="../../index_utils.html#libtsm.utils.normalize_length">[docs]</a><span class="k">def</span> <span class="nf">normalize_length</span><span class="p">(</span><span class="n">xf</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Adjusts the length of signal xf to variable &quot;length&quot;.</span>
 
@@ -662,7 +665,7 @@
     <span class="k">return</span> <span class="n">y</span></div>
 
 
-<div class="viewcode-block" id="modify_spectral_envelope"><a class="viewcode-back" href="../../api_documentation.html#libtsm.utils.modify_spectral_envelope">[docs]</a><span class="k">def</span> <span class="nf">modify_spectral_envelope</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ana_hop</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">win_length</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">win_beta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="mi">22050</span><span class="p">,</span>  <span class="n">filt_len</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="modify_spectral_envelope"><a class="viewcode-back" href="../../index_utils.html#libtsm.utils.modify_spectral_envelope">[docs]</a><span class="k">def</span> <span class="nf">modify_spectral_envelope</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ana_hop</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">win_length</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">win_beta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="mi">22050</span><span class="p">,</span>  <span class="n">filt_len</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Complement to the pitch shifting algorithm, that modifies the formants of the</span>
 <span class="sd">    pitch-shifted signal to match them with those of the original signal.</span>
@@ -728,7 +731,7 @@
     <span class="k">return</span> <span class="n">y_spec_env_x</span></div>
 
 
-<div class="viewcode-block" id="comp_env"><a class="viewcode-back" href="../../api_documentation.html#libtsm.utils.comp_env">[docs]</a><span class="k">def</span> <span class="nf">comp_env</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">filt_len</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="comp_env"><a class="viewcode-back" href="../../index_utils.html#libtsm.utils.comp_env">[docs]</a><span class="k">def</span> <span class="nf">comp_env</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">filt_len</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the envelope of a given signal spectrum.</span>
 
