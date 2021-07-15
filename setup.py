@@ -27,16 +27,15 @@ setup(
     install_requires=['ipython >= 7.8.0, < 8.0.0',
                       'librosa >= 0.8.0, < 1.0.0',
                       'matplotlib >= 3.1.0, < 4.0.0',
-                      'music21 >= 5.7.0, < 6.0.0',
                       'numba >= 0.51.0, < 1.0.0',
                       'numpy >= 1.17.0, < 2.0.0',
                       'pysoundfile >= 0.9.0, < 1.0.0',
                       'scipy >= 1.3.0, < 2.0.0'],
-    python_requires='>=3.6',
+    python_requires='>=3.6, <3.9',
     extras_require={
         'dev': ['nbstripout == 0.4.*'],
         'tests': ['pytest == 6.2.*'],
         'docs': ['sphinx == 4.0.*',
-                 'sphinx-rtd-theme'],
+                 'sphinx-rtd-theme == 0.5.*'],
     }
 )
