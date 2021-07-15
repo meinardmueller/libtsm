@@ -6,7 +6,7 @@ with open('README.md', 'r') as fdesc:
 
 setup(
     name='libtsm',
-    version='1.0.0',
+    version='1.0.1',
     description='Python Package for Time-Scale Modification and Pitch-Shifting',
     author='Sebastian Rosenzweig, Simon Schwär, Jonathan Driedger and Meinard Müller',
     author_email='sebastian.rosenzweig@audiolabs-erlangen.de',
