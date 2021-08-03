@@ -85,13 +85,21 @@ def pitch_shift(x, p, t_p=None, Fs=22050, order="res-tsm", **kwargs) -> np.ndarr
     if len(x.shape) == 1:
         x = x.reshape(-1, 1)
 
+    t_x = np.linspace(0, (len(x) - 1) / Fs, len(x))
+
     if not np.isscalar(p):
         if t_p is None:
             raise Exception("t must be specified if p is an array!")
         if len(p) != len(t_p):
             raise Exception("t must have the same length as p!")
-
-    t_x = np.linspace(0, (len(x) - 1) / Fs, len(x))
+        if t_p[0] != 0:  # time axis should start with 0
+            t_p = t_p.astype(float)
+            t_p = np.insert(t_p, 0, 0)
+            p = np.insert(p, 0, 0)
+        if t_p[-1] != t_x[-1]:  # time axis should end with the last time instance
+            t_p = t_p.astype(float)
+            t_p = np.insert(t_p, len(t_p), t_x[-1])
+            p = np.insert(p, len(p), 0)
 
     # account for sign change when order of resampling and TSM is exchanged
     if order == "res-tsm":
@@ -110,7 +118,8 @@ def pitch_shift(x, p, t_p=None, Fs=22050, order="res-tsm", **kwargs) -> np.ndarr
         tau[:, 0] = t_p
 
         for i in range(1, len(alpha)):
-            tau[i, 1] = alpha[i] / Fs + tau[i - 1, 1]
+            dt = tau[i, 0] - tau[i - 1, 0]
+            tau[i, 1] = dt * alpha[i-1] + tau[i - 1, 1]
 
     # Pitch-shifting
     if order == "res-tsm":
@@ -122,7 +131,8 @@ def pitch_shift(x, p, t_p=None, Fs=22050, order="res-tsm", **kwargs) -> np.ndarr
         y_ps = fi(t_res)
 
         tau_inv = np.hstack((time_input.reshape(-1, 1), t_x.reshape(-1, 1)))
-        anchor_points = np.round(tau_inv * Fs).astype(int)
+        anchor_points = np.ceil(tau_inv * Fs).astype(int)
+        anchor_points = np.flip(anchor_points, axis=0)
         anchor_points = anchor_points[np.unique(anchor_points[:, 0],
                                                 return_index=True)[1], :]  # only keep unique indices
 
@@ -131,7 +141,7 @@ def pitch_shift(x, p, t_p=None, Fs=22050, order="res-tsm", **kwargs) -> np.ndarr
 
     elif order == "tsm-res":
         # compute anchor points
-        anchor_points = np.round(tau * Fs).astype(int)
+        anchor_points = np.ceil(tau * Fs).astype(int)
         anchor_points = anchor_points[np.unique(anchor_points[:, 1],
                                                 return_index=True)[1], :]  # only keep unique indices
 
@@ -145,5 +155,8 @@ def pitch_shift(x, p, t_p=None, Fs=22050, order="res-tsm", **kwargs) -> np.ndarr
         fi = sc.interpolate.interp1d(time_input, y_tsm[:, 0], kind='cubic', fill_value="extrapolate")
         y_ps = fi(t_x)
 
-    return y_ps.reshape(-1, 1)
+    # crop if pitch-shifted signal is longer than x
+    y_ps = y_ps.reshape(-1, 1)[:len(x), :]
+
+    return y_ps
 
