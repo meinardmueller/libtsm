@@ -1,27 +1,22 @@
-# YAML 1.2
----
-authors:
-  -
-    family-names: Rosenzweig
-    given-names: Sebastian
-    orcid: "https://orcid.org/0000-0003-4964-9217"
-  -
-    family-names: "Schwär"
-    given-names: Simon
-  -
-    family-names: Driedger
-    given-names: Jonathan
-  -
-    family-names: "Müller"
-    given-names: Meinard
-    orcid: "https://orcid.org/0000-0001-6062-7524"
 cff-version: "1.1.0"
-date-released: 2021-08-03
+message: "If you use this software, please cite it using these metadata."
+authors:
+- family-names: "Rosenzweig"
+  given-names: "Sebastian"
+  orcid: "https://orcid.org/0000-0003-4964-9217"
+- family-names: "Schwär"
+  given-names: "Simon"
+- family-names: "Driedger"
+  given-names: "Jonathan"
+- family-names: "Müller"
+  given-names: "Meinard"
+  orcid: "https://orcid.org/0000-0001-6062-7524"
+institution: "International Audio Laboratories Erlangen"
+title: "Adaptive Pitch-Shifting with Applications to Intonation Adjustment in A Cappella Recordings"
+conference: "International Conference on Digital Audio Effects (DAFx)"
+year: 2021
+url: "https://www.audiolabs-erlangen.de/resources/MIR/2021-DAFX-AdaptivePitchShifting"
 keywords:
   - "time-scale modification"
   - "pitch-shifting"
 license: MIT
-message: "If you use this software, please cite it using these metadata."
-repository-code: "https://github.com/meinardmueller/libtsm"
-title: "Adaptive Pitch-Shifting with Applications to Intonation Adjustment in A Cappella Recordings"
-...
