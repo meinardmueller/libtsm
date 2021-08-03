@@ -16,12 +16,12 @@ authors:
     given-names: Meinard
     orcid: "https://orcid.org/0000-0001-6062-7524"
 cff-version: "1.1.0"
+date-released: 2021-08-03
 keywords: 
   - "time-scale modification"
   - "pitch-shifting"
 license: MIT
 message: "If you use this software, please cite it using these metadata."
-repository-code: "https://github.com/meinardmueller/libtsm"
+repository-code: "https://www.audiolabs-erlangen.de/resources/MIR/2021-DAFX-AdaptivePitchShifting"
 title: "Adaptive Pitch-Shifting with Applications to Intonation Adjustment in A Cappella Recordings"
-version: "1.1.0"
 ...
