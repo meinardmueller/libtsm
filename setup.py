@@ -6,12 +6,12 @@ with open('README.md', 'r') as fdesc:
 
 setup(
     name='libtsm',
-    version='1.0.1',
+    version='1.1.0',
     description='Python Package for Time-Scale Modification and Pitch-Shifting',
     author='Sebastian Rosenzweig, Simon Schwär, Jonathan Driedger and Meinard Müller',
     author_email='sebastian.rosenzweig@audiolabs-erlangen.de',
     url='https://www.audiolabs-erlangen.de/resources/MIR/2021-DAFX-AdaptivePitchShifting',
-    download_url='https://github.com/meinardmueller/libtsm/archive/refs/tags/v1.0.0.tar.gz',
+    download_url='https://github.com/meinardmueller/libtsm/archive/refs/tags/v1.1.0.tar.gz',
     packages=find_packages(),
     long_description=long_description,
     long_description_content_type='text/markdown',
