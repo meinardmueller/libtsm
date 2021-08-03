@@ -1,0 +1,27 @@
+# YAML 1.2
+---
+authors: 
+  -
+    family-names: Rosenzweig
+    given-names: Sebastian
+    orcid: "https://orcid.org/0000-0003-4964-9217"
+  -
+    family-names: "Schwär"
+    given-names: Simon
+  -
+    family-names: Driedger
+    given-names: Jonathan
+  -
+    family-names: "Müller"
+    given-names: Meinard
+    orcid: "https://orcid.org/0000-0001-6062-7524"
+cff-version: "1.1.0"
+keywords: 
+  - "time-scale modification"
+  - "pitch-shifting"
+license: MIT
+message: "If you use this software, please cite it using these metadata."
+repository-code: "https://github.com/meinardmueller/libtsm"
+title: "Adaptive Pitch-Shifting with Applications to Intonation Adjustment in A Cappella Recordings"
+version: "1.1.0"
+...
