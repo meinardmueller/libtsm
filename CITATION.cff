@@ -14,10 +14,13 @@ authors:
   orcid: "https://orcid.org/0000-0001-6062-7524"
 institution: "International Audio Laboratories Erlangen"
 title: "Adaptive Pitch-Shifting with Applications to Intonation Adjustment in A Cappella Recordings"
-conference: "International Conference on Digital Audio Effects (DAFx)"
+conference:
+- name: "International Conference on Digital Audio Effects (DAFx)"
+- city: "Vienna"
+- country: "Austria"
 year: 2021
 url: "https://www.audiolabs-erlangen.de/resources/MIR/2021-DAFX-AdaptivePitchShifting"
 keywords:
-  - "time-scale modification"
-  - "pitch-shifting"
+- "time-scale modification"
+- "pitch-shifting"
 license: MIT
