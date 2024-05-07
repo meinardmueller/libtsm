@@ -12,17 +12,24 @@ from .utils import win, stft, istft, cross_corr, hps, find_peaks
 
 def pv_tsm(x, alpha, syn_hop=512, win_length=2048, win_beta=1, Fs=22050, zero_pad=0, restore_energy=False,
            fft_shift=False, phase_locking=False) -> np.ndarray:
-    """
-    Phase Vocoder Time scale modification algorithm, that rescales the time-axis of the input signal x
-    according to the time-stretch function s without altering the pitch of x.
+    """Time scale modification based on a phase vocoder
+
+    Rescales the time-axis of the input signal x according to the time-stretch function alpha
+    without altering the pitch of x.
 
     Parameters
     ----------
-    x : np.ndarray [shape=(N, )], real - valued
-        Signal to be transformed
+    x : np.ndarray [shape=(N, C)], real-valued
+        Signal to be transformed, second dimension is an optional channel dimension
 
     alpha : float or np.ndarray [shape=(S, 2)]
-        Time stretch function, given by a constant (float) or a set of S anchor points (int)
+        Time stretch function, given by a constant (float) or a set of S anchor points (int).
+        A valid anchor point sequence
+            (1) contains only non-negative values,
+            (2) both sequences along the first axis are strictly increasing,
+            (3) starts with position (m, 0), where m is an intereger >= 0.
+        These conditions will be checked and an error is thrown if they are not met.
+        See `libtsm.ensure_validity` for one way to ensure that condition (2) is fulfilled.
 
     syn_hop : int
         hop size of the synthesis window
@@ -80,6 +87,10 @@ def pv_tsm(x, alpha, syn_hop=512, win_length=2048, win_beta=1, Fs=22050, zero_pa
     ana_win_pos = np.round(ana_win_pos).astype(int)  # positions of the analysis windows in the input
     ana_hop = np.append([0], ana_win_pos[1:] - ana_win_pos[:-1])  # analysis hop sizes
 
+    # check conditions
+    assert anchor_points[0,1] == 0, "First sample for target sequence must be zero."
+    assert np.all(ana_hop[1:] > 0), "The anchor point sequences must be stricly increasing for both source and target."
+
     # Phase Vocoder
     y = np.zeros((output_length, num_of_chan))  # initialize output
 
@@ -118,7 +129,6 @@ def pv_tsm(x, alpha, syn_hop=512, win_length=2048, win_beta=1, Fs=22050, zero_pa
             if not phase_locking:  # standard phase vocoder: the phase continuity of every bin is preserved separately
                 theta = ph_syn + ipa_hop - ph_curr  # phases of the last output frame Instantaneous phase advance
                 # Phases of the current input frame
-                phasor = np.exp(1j * theta)
 
             else:  # Phase vocoder with identity phase locking: the phase relationships from the input frame are
                 # partially preserved by 'locking' the phases of bins in the region of influence of a peak in the
@@ -131,9 +141,7 @@ def pv_tsm(x, alpha, syn_hop=512, win_length=2048, win_beta=1, Fs=22050, zero_pa
                     theta[irs[n]:ire[n]] = ph_syn[p[n]] + ipa_hop[p[n]] - ph_curr[p[n]]  # Phases of the last
                     # output frame, Instantaneous phase advance, Phases of the current input frame
 
-                phasor = np.exp(1j * theta)
-
-            Y[:, i] = phasor * X[:, i]
+            Y[:, i] = np.exp(1j * theta) * X[:, i]
 
         # ISTFT
         y_c = istft(Y, syn_hop=syn_hop, win_length=win_length, win_beta=win_beta, zero_pad=zero_pad, num_of_iter=1,
@@ -154,8 +162,14 @@ def wsola_tsm(x, alpha, syn_hop=512, win_length=1024, win_beta=2, tol=512) -> np
     x : np.ndarray [shape=(N,num_of_chan)], real - valued
         Signal to be transformed
 
-    alpha : float or np.ndarray [shape=(S,2)]
-        Time stretch function, given by a constant (float) or a set of S anchor points (int)
+    alpha : float or np.ndarray [shape=(S, 2)]
+        Time stretch function, given by a constant (float) or a set of S anchor points (int).
+        A valid anchor point sequence
+            (1) contains only non-negative values,
+            (2) both sequences along the first axis are strictly increasing,
+            (3) starts with position (m, 0), where m is an intereger >= 0.
+        These conditions will be checked and an error is thrown if they are not met.
+        See `libtsm.ensure_validity` for one way to ensure that condition (2) is fulfilled.
 
     syn_hop : int
         hop size of the synthesis window
@@ -198,11 +212,14 @@ def wsola_tsm(x, alpha, syn_hop=512, win_length=1024, win_beta=2, tol=512) -> np
     syn_win_pos = np.arange(0, output_length + win_len_half, syn_hop)  # positions of the synthesis winLenHalf
     # windows in the output
 
-    fi = scipy.interpolate.interp1d(anchor_points[:, 1], anchor_points[:, 0], kind='linear',
-                                 fill_value='extrapolate')
+    fi = scipy.interpolate.interp1d(anchor_points[:, 1], anchor_points[:, 0], kind='linear', fill_value='extrapolate')
     ana_win_pos = fi(syn_win_pos)
     ana_win_pos = np.round(ana_win_pos).astype(int)  # positions of the analysis windows in the input
     ana_hop = np.append([0], ana_win_pos[1:] - ana_win_pos[:-1])  # analysis hop sizes
+
+    # check conditions
+    assert anchor_points[0,1] == 0, "First sample for target sequence must be zero."
+    assert np.all(ana_hop[1:] > 0), "The anchor point sequences must be stricly increasing for both source and target."
 
     # WSOLA
     y = np.zeros((output_length, num_of_chan))  # initialize output
@@ -269,8 +286,14 @@ def hps_tsm(x, alpha, Fs=22050, hps_ana_hop=256, hps_win_length=1024, hps_win_be
     x : np.ndarray [shape=(N, )], real - valued
         Signal to be transformed
 
-    alpha : float or np.ndarray [shape=(S,2)]
-        Time stretch function, given by a constant (float) or a set of S anchor points (int)
+    alpha : float or np.ndarray [shape=(S, 2)]
+        Time stretch function, given by a constant (float) or a set of S anchor points (int).
+        A valid anchor point sequence
+            (1) contains only non-negative values,
+            (2) both sequences along the first axis are strictly increasing,
+            (3) starts with position (m, 0), where m is an intereger >= 0.
+        These conditions will be checked and an error is thrown if they are not met.
+        See `libtsm.ensure_validity` for one way to ensure that condition (2) is fulfilled.
 
     Fs : int
         Sampling rate
