@@ -11,6 +11,30 @@ import scipy.signal
 from typing import Tuple
 
 
+def ensure_validity(alpha, syn_hop=128):
+    """Remove points from a sequence of anchor points to ensure a valid TSM input
+
+    This function removes any anchor points that lead to a non-monotonous increase of the analysis window and
+    returns a new sequence of anchor points that is a valid TSM input.
+
+    Note that, depending on the data, this is not a sensible way to ensure a valid TSM input. Often, it may be
+    advisable to use coarser and semantically meaningful positions for the anchor points.
+
+    Parameters
+    ----------
+    alpha : float or np.ndarray [shape=(S, 2)]
+        Time stretch function, given by a set of S anchor points (int).
+
+    syn_hop : int
+        (smallest) hop size of the synthesis window (default: 128)
+    """
+    d_ana = np.diff(alpha[:,0])
+    d_syn = np.diff(alpha[:,1])
+    not_too_steep = np.pad(np.round(d_syn / d_ana) <= syn_hop, (1,0), constant_values=True)
+
+    return alpha[not_too_steep,:]
+
+
 def win(win_len, beta) -> np.ndarray:
     """
     Generates a sin^beta window.
