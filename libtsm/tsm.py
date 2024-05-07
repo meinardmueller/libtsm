@@ -89,6 +89,7 @@ def pv_tsm(x, alpha, syn_hop=512, win_length=2048, win_beta=1, Fs=22050, zero_pa
 
     # check conditions
     assert anchor_points[0,1] == 0, "First sample for target sequence must be zero."
+    assert anchor_points[0,0] >= 0, "All anchor points must be non-negative."
     assert np.all(ana_hop[1:] > 0), "The anchor point sequences must be stricly increasing for both source and target."
 
     # Phase Vocoder
@@ -219,6 +220,7 @@ def wsola_tsm(x, alpha, syn_hop=512, win_length=1024, win_beta=2, tol=512) -> np
 
     # check conditions
     assert anchor_points[0,1] == 0, "First sample for target sequence must be zero."
+    assert anchor_points[0,0] >= 0, "All anchor points must be non-negative."
     assert np.all(ana_hop[1:] > 0), "The anchor point sequences must be stricly increasing for both source and target."
 
     # WSOLA
