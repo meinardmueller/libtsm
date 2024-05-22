@@ -11,6 +11,34 @@ import scipy.signal
 from typing import Tuple
 
 
+def ensure_validity(alpha, syn_hop=128):
+    """Remove points from a sequence of anchor points to ensure a valid TSM input
+
+    This function removes any anchor points that lead to a non-monotonous increase of the analysis window and
+    returns a new sequence of anchor points that is a valid TSM input.
+
+    Note that, depending on the data, this is not a sensible way to ensure a valid TSM input. Often, it may be
+    advisable to use coarser and semantically meaningful positions for the anchor points.
+
+    Parameters
+    ----------
+    alpha : float or np.ndarray [shape=(S, 2)]
+        Time stretch function, given by a set of S anchor points (int).
+
+    syn_hop : int
+        (smallest) hop size of the synthesis window (default: 128)
+    """
+    d_ana = np.diff(alpha[:,0])
+    d_syn = np.diff(alpha[:,1])
+    not_too_steep = np.pad(np.round(d_syn / d_ana) <= syn_hop, (1,0), constant_values=True)
+
+    # call recursively to remove consecutive points that are too steep
+    if not np.all(not_too_steep):
+        return ensure_validity(alpha[not_too_steep,:], syn_hop)
+    else:
+        return alpha
+
+
 def win(win_len, beta) -> np.ndarray:
     """
     Generates a sin^beta window.
@@ -93,7 +121,7 @@ def hps(x, ana_hop=256, win_length=1024, win_beta=2, Fs=22050, zero_pad=0, fil_l
 
         # stft
         spec, f, t = stft(x_c, ana_hop=ana_hop, win_length=win_length, win_beta=win_beta, Fs=Fs, num_of_frames=-1,
-                          fft_shift=False, zero_pad=0)
+                          fft_shift=False, zero_pad=zero_pad)
         mag_spec = np.abs(spec)
 
         # harmonic-percussive separation

@@ -8,3 +8,6 @@ libtsm.egg-info/
 
 # do not ignore build of docs
 !docs/build/
+
+# Jupyter
+.ipynb_checkpoints

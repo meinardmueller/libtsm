@@ -130,11 +130,11 @@ def pitch_shift(x, p, t_p=None, Fs=22050, order="res-tsm", **kwargs) -> np.ndarr
         t_res = np.arange(0, tau[-1, 1] + 1 / Fs, 1 / Fs)
         y_ps = fi(t_res)
 
-        tau_inv = np.hstack((time_input.reshape(-1, 1), t_x.reshape(-1, 1)))
-        anchor_points = np.ceil(tau_inv * Fs).astype(int)
-        anchor_points = np.flip(anchor_points, axis=0)
-        anchor_points = anchor_points[np.unique(anchor_points[:, 0],
-                                                return_index=True)[1], :]  # only keep unique indices
+        # use inverse tau points as anchor points for TSM
+        anchor_points = np.ceil(tau * Fs).astype(int)
+        anchor_points = np.flip(anchor_points, axis=1)
+        # only keep unique indices
+        anchor_points = anchor_points[np.unique(anchor_points[:, 1], return_index=True)[1], :]
 
         # Time-Scale Modification
         y_ps = hps_tsm(y_ps, anchor_points, Fs=Fs, **kwargs)
@@ -142,8 +142,8 @@ def pitch_shift(x, p, t_p=None, Fs=22050, order="res-tsm", **kwargs) -> np.ndarr
     elif order == "tsm-res":
         # compute anchor points
         anchor_points = np.ceil(tau * Fs).astype(int)
-        anchor_points = anchor_points[np.unique(anchor_points[:, 1],
-                                                return_index=True)[1], :]  # only keep unique indices
+        # only keep unique indices
+        anchor_points = anchor_points[np.unique(anchor_points[:, 1], return_index=True)[1], :]
 
         # Time-Scale Modification
         y_tsm = hps_tsm(x, anchor_points, Fs=Fs, **kwargs)
