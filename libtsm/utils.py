@@ -117,7 +117,7 @@ def hps(x, ana_hop=256, win_length=1024, win_beta=2, Fs=22050, zero_pad=0, fil_l
 
         # stft
         spec, f, t = stft(x_c, ana_hop=ana_hop, win_length=win_length, win_beta=win_beta, Fs=Fs, num_of_frames=-1,
-                          fft_shift=False, zero_pad=0)
+                          fft_shift=False, zero_pad=zero_pad)
         mag_spec = np.abs(spec)
 
         # harmonic-percussive separation
