@@ -32,7 +32,11 @@ def ensure_validity(alpha, syn_hop=128):
     d_syn = np.diff(alpha[:,1])
     not_too_steep = np.pad(np.round(d_syn / d_ana) <= syn_hop, (1,0), constant_values=True)
 
-    return alpha[not_too_steep,:]
+    # call recursively to remove consecutive points that are too steep
+    if not np.all(not_too_steep):
+        return ensure_validity(alpha[not_too_steep,:], syn_hop)
+    else:
+        return alpha
 
 
 def win(win_len, beta) -> np.ndarray:
