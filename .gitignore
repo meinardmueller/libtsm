@@ -2,7 +2,6 @@
 .DS_Store
 
 # ignore files created when preparing package for PyPi
-build/
 dist/
 libtsm.egg-info/
 
