@@ -105,9 +105,11 @@
 <span class="sd">    alpha : float or np.ndarray [shape=(S, 2)]</span>
 <span class="sd">        Time stretch function, given by a constant (float) or a set of S anchor points (int).</span>
 <span class="sd">        A valid anchor point sequence</span>
+<span class="sd">        </span>
 <span class="sd">            (1) contains only non-negative values,</span>
 <span class="sd">            (2) both sequences along the first axis are strictly increasing,</span>
-<span class="sd">            (3) starts with position (m, 0), where m is an intereger &gt;= 0.</span>
+<span class="sd">            (3) starts with position (m, 0), where m is an integer &gt;= 0.</span>
+
 <span class="sd">        These conditions will be checked and an error is thrown if they are not met.</span>
 <span class="sd">        See `libtsm.ensure_validity` for one way to ensure that condition (2) is fulfilled.</span>
 
@@ -234,8 +236,7 @@
 
 
 <div class="viewcode-block" id="wsola_tsm"><a class="viewcode-back" href="../../index_tsm.html#libtsm.tsm.wsola_tsm">[docs]</a><span class="k">def</span> <span class="nf">wsola_tsm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">syn_hop</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">win_length</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">win_beta</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Waveform Similarity Overlap and Add (WSOLA) algorithm that rescales the time-axis of the input signal x</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Waveform Similarity Overlap and Add (WSOLA) algorithm that rescales the time-axis of the input signal x</span>
 <span class="sd">    according to the time-stretch function s without altering the pitch of x.</span>
 
 <span class="sd">    Parameters</span>
@@ -246,9 +247,11 @@
 <span class="sd">    alpha : float or np.ndarray [shape=(S, 2)]</span>
 <span class="sd">        Time stretch function, given by a constant (float) or a set of S anchor points (int).</span>
 <span class="sd">        A valid anchor point sequence</span>
+
 <span class="sd">            (1) contains only non-negative values,</span>
 <span class="sd">            (2) both sequences along the first axis are strictly increasing,</span>
-<span class="sd">            (3) starts with position (m, 0), where m is an intereger &gt;= 0.</span>
+<span class="sd">            (3) starts with position (m, 0), where m is an integer &gt;= 0.</span>
+
 <span class="sd">        These conditions will be checked and an error is thrown if they are not met.</span>
 <span class="sd">        See `libtsm.ensure_validity` for one way to ensure that condition (2) is fulfilled.</span>
 
@@ -358,8 +361,7 @@
             <span class="n">hps_fil_len_harm</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">hps_fil_len_perc</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pv_syn_hop</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">pv_win_length</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">pv_win_beta</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pv_zero_pad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">pv_restore_energy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pv_fft_shift</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ola_syn_hop</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">ola_win_length</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">ola_win_beta</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> \
         <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Time Scale Modification algorithm based on Harmonic - Percussive separation. After separation is</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Time Scale Modification algorithm based on Harmonic - Percussive separation. After separation is</span>
 <span class="sd">    performed, the algorithm uses two phase vocoder TSM and WSOLA TSM algorithms for the Harmonic and percussive part</span>
 <span class="sd">    separately.</span>
 
@@ -371,11 +373,13 @@
 <span class="sd">    alpha : float or np.ndarray [shape=(S, 2)]</span>
 <span class="sd">        Time stretch function, given by a constant (float) or a set of S anchor points (int).</span>
 <span class="sd">        A valid anchor point sequence</span>
+
 <span class="sd">            (1) contains only non-negative values,</span>
 <span class="sd">            (2) both sequences along the first axis are strictly increasing,</span>
-<span class="sd">            (3) starts with position (m, 0), where m is an intereger &gt;= 0.</span>
-<span class="sd">        These conditions will be checked and an error is thrown if they are not met.</span>
-<span class="sd">        See `libtsm.ensure_validity` for one way to ensure that condition (2) is fulfilled.</span>
+<span class="sd">            (3) starts with position (m, 0), where m is an integer &gt;= 0.</span>
+<span class="sd">        </span>
+<span class="sd">        These conditions will be checked and an error is thrown if they are not met. See `libtsm.ensure_validity` for</span>
+<span class="sd">        one way to ensure that condition (2) is fulfilled.</span>
 
 <span class="sd">    Fs : int</span>
 <span class="sd">        Sampling rate</span>
@@ -452,8 +456,7 @@
 
 <div class="viewcode-block" id="pv_int_tsm"><a class="viewcode-back" href="../../index_tsm.html#libtsm.tsm.pv_int_tsm">[docs]</a><span class="k">def</span> <span class="nf">pv_int_tsm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">syn_hop</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">win_length</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">win_beta</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="mi">22050</span><span class="p">,</span> <span class="n">zero_pad</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">restore_energy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                <span class="n">fft_shift</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Phase Vocoder Time scale modification algorithm, that rescales the time-axis of the input signal x</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Phase Vocoder Time scale modification algorithm, that rescales the time-axis of the input signal x</span>
 <span class="sd">    according to the time-stretch function s without altering the pitch of x. This algorithm is optimized for integer</span>
 <span class="sd">    values of the time stretching function.</span>
 
@@ -543,8 +546,7 @@
 
 
 <div class="viewcode-block" id="two_step_tsm"><a class="viewcode-back" href="../../index_tsm.html#libtsm.tsm.two_step_tsm">[docs]</a><span class="k">def</span> <span class="nf">two_step_tsm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="mi">22050</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;exact-coarse&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Time Scale Modification algorithm, where the signal is stretched by the integer and decimal part</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Time Scale Modification algorithm, where the signal is stretched by the integer and decimal part</span>
 <span class="sd">    of the time stretch function using two different algorithms.</span>
 
 <span class="sd">    Parameters</span>

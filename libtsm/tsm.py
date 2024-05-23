@@ -25,9 +25,11 @@ def pv_tsm(x, alpha, syn_hop=512, win_length=2048, win_beta=1, Fs=22050, zero_pa
     alpha : float or np.ndarray [shape=(S, 2)]
         Time stretch function, given by a constant (float) or a set of S anchor points (int).
         A valid anchor point sequence
+        
             (1) contains only non-negative values,
             (2) both sequences along the first axis are strictly increasing,
-            (3) starts with position (m, 0), where m is an intereger >= 0.
+            (3) starts with position (m, 0), where m is an integer >= 0.
+
         These conditions will be checked and an error is thrown if they are not met.
         See `libtsm.ensure_validity` for one way to ensure that condition (2) is fulfilled.
 
@@ -154,8 +156,7 @@ def pv_tsm(x, alpha, syn_hop=512, win_length=2048, win_beta=1, Fs=22050, zero_pa
 
 
 def wsola_tsm(x, alpha, syn_hop=512, win_length=1024, win_beta=2, tol=512) -> np.ndarray:
-    """
-    Waveform Similarity Overlap and Add (WSOLA) algorithm that rescales the time-axis of the input signal x
+    """Waveform Similarity Overlap and Add (WSOLA) algorithm that rescales the time-axis of the input signal x
     according to the time-stretch function s without altering the pitch of x.
 
     Parameters
@@ -166,9 +167,11 @@ def wsola_tsm(x, alpha, syn_hop=512, win_length=1024, win_beta=2, tol=512) -> np
     alpha : float or np.ndarray [shape=(S, 2)]
         Time stretch function, given by a constant (float) or a set of S anchor points (int).
         A valid anchor point sequence
+
             (1) contains only non-negative values,
             (2) both sequences along the first axis are strictly increasing,
-            (3) starts with position (m, 0), where m is an intereger >= 0.
+            (3) starts with position (m, 0), where m is an integer >= 0.
+
         These conditions will be checked and an error is thrown if they are not met.
         See `libtsm.ensure_validity` for one way to ensure that condition (2) is fulfilled.
 
@@ -278,8 +281,7 @@ def hps_tsm(x, alpha, Fs=22050, hps_ana_hop=256, hps_win_length=1024, hps_win_be
             hps_fil_len_harm=10, hps_fil_len_perc=10, pv_syn_hop=512, pv_win_length=2048, pv_win_beta=2, pv_zero_pad=0,
             pv_restore_energy=False, pv_fft_shift=False, ola_syn_hop=128, ola_win_length=256, ola_win_beta=2) \
         -> np.ndarray:
-    """
-    Time Scale Modification algorithm based on Harmonic - Percussive separation. After separation is
+    """Time Scale Modification algorithm based on Harmonic - Percussive separation. After separation is
     performed, the algorithm uses two phase vocoder TSM and WSOLA TSM algorithms for the Harmonic and percussive part
     separately.
 
@@ -291,11 +293,13 @@ def hps_tsm(x, alpha, Fs=22050, hps_ana_hop=256, hps_win_length=1024, hps_win_be
     alpha : float or np.ndarray [shape=(S, 2)]
         Time stretch function, given by a constant (float) or a set of S anchor points (int).
         A valid anchor point sequence
+
             (1) contains only non-negative values,
             (2) both sequences along the first axis are strictly increasing,
-            (3) starts with position (m, 0), where m is an intereger >= 0.
-        These conditions will be checked and an error is thrown if they are not met.
-        See `libtsm.ensure_validity` for one way to ensure that condition (2) is fulfilled.
+            (3) starts with position (m, 0), where m is an integer >= 0.
+        
+        These conditions will be checked and an error is thrown if they are not met. See `libtsm.ensure_validity` for
+        one way to ensure that condition (2) is fulfilled.
 
     Fs : int
         Sampling rate
@@ -372,8 +376,7 @@ def hps_tsm(x, alpha, Fs=22050, hps_ana_hop=256, hps_win_length=1024, hps_win_be
 
 def pv_int_tsm(x, alpha, syn_hop=512, win_length=2048, win_beta=2, Fs=22050, zero_pad=-1, restore_energy=False,
                fft_shift=True) -> np.ndarray:
-    """
-    Phase Vocoder Time scale modification algorithm, that rescales the time-axis of the input signal x
+    """Phase Vocoder Time scale modification algorithm, that rescales the time-axis of the input signal x
     according to the time-stretch function s without altering the pitch of x. This algorithm is optimized for integer
     values of the time stretching function.
 
@@ -463,8 +466,7 @@ def pv_int_tsm(x, alpha, syn_hop=512, win_length=2048, win_beta=2, Fs=22050, zer
 
 
 def two_step_tsm(x, alpha, Fs=22050, order='exact-coarse') -> np.ndarray:
-    """
-    Time Scale Modification algorithm, where the signal is stretched by the integer and decimal part
+    """Time Scale Modification algorithm, where the signal is stretched by the integer and decimal part
     of the time stretch function using two different algorithms.
 
     Parameters
